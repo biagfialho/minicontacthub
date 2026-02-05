@@ -6,6 +6,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import Logo from '@/components/Logo';
+import { LogOut, Send } from 'lucide-react';
 
 const Form = () => {
   const { user, loading, signOut } = useAuth();
@@ -60,60 +64,113 @@ const Form = () => {
   };
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Carregando...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          <p className="text-muted-foreground">Carregando...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen bg-background p-4">
-      <div className="max-w-md mx-auto space-y-6">
-        <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Novo Contato</h1>
-          <Button variant="outline" onClick={handleLogout}>Sair</Button>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="nome">Nome</Label>
-            <Input
-              id="nome"
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="mensagem">Mensagem</Label>
-            <Textarea
-              id="mensagem"
-              value={mensagem}
-              onChange={(e) => setMensagem(e.target.value)}
-              required
-            />
-          </div>
-
-          {message && (
-            <p className={`text-sm ${message.includes('Erro') ? 'text-destructive' : 'text-primary'}`}>
-              {message}
-            </p>
-          )}
-
-          <Button type="submit" className="w-full" disabled={saving}>
-            {saving ? 'Salvando...' : 'Salvar'}
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="border-b border-border/50 bg-card">
+        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+          <Logo size="sm" />
+          <Button variant="ghost" size="sm" onClick={handleLogout} className="gap-2 text-muted-foreground hover:text-foreground">
+            <LogOut className="w-4 h-4" />
+            Sair
           </Button>
-        </form>
-      </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-2xl mx-auto px-4 py-12">
+        <Card className="border-border/50 shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-xl font-semibold">Novo Contato</CardTitle>
+            <CardDescription>
+              Preencha as informações abaixo para adicionar um novo contato
+            </CardDescription>
+          </CardHeader>
+          <Separator />
+          <CardContent className="pt-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="space-y-2">
+                <Label htmlFor="nome" className="text-sm font-medium">
+                  Nome
+                </Label>
+                <Input
+                  id="nome"
+                  placeholder="Nome completo"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  required
+                  className="h-11"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-sm font-medium">
+                  Email
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="email@exemplo.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="h-11"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="mensagem" className="text-sm font-medium">
+                  Mensagem
+                </Label>
+                <Textarea
+                  id="mensagem"
+                  placeholder="Digite sua mensagem..."
+                  value={mensagem}
+                  onChange={(e) => setMensagem(e.target.value)}
+                  required
+                  className="min-h-[120px] resize-none"
+                />
+              </div>
+
+              {message && (
+                <div className={`p-3 rounded-lg border ${
+                  message.includes('Erro') 
+                    ? 'bg-destructive/10 border-destructive/20' 
+                    : 'bg-primary/10 border-primary/20'
+                }`}>
+                  <p className={`text-sm ${message.includes('Erro') ? 'text-destructive' : 'text-primary'}`}>
+                    {message}
+                  </p>
+                </div>
+              )}
+
+              <Button type="submit" className="w-full h-11 font-medium gap-2" disabled={saving}>
+                {saving ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+                    Salvando...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    Salvar Contato
+                  </>
+                )}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </main>
     </div>
   );
 };
