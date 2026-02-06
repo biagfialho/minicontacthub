@@ -6,20 +6,35 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
 };
 
-function validateInput(data: unknown): { nome: string; email: string; mensagem: string } | null {
+function validateInput(data: unknown): { nome: string; email: string; mensagem: string; company?: string; role?: string; contact_type?: string } | null {
   if (!data || typeof data !== 'object') return null;
 
-  const { nome, email, mensagem } = data as Record<string, unknown>;
+  const { nome, email, mensagem, company, role, contact_type } = data as Record<string, unknown>;
 
   if (typeof nome !== 'string' || nome.trim().length === 0 || nome.length > 200) return null;
   if (typeof email !== 'string' || email.length > 255) return null;
   if (typeof mensagem !== 'string' || mensagem.trim().length === 0 || mensagem.length > 5000) return null;
 
-  // Basic email format check
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) return null;
 
-  return { nome: nome.trim(), email: email.trim(), mensagem: mensagem.trim() };
+  const result: { nome: string; email: string; mensagem: string; company?: string; role?: string; contact_type?: string } = {
+    nome: nome.trim(),
+    email: email.trim(),
+    mensagem: mensagem.trim(),
+  };
+
+  if (typeof company === 'string' && company.trim().length > 0 && company.length <= 200) {
+    result.company = company.trim();
+  }
+  if (typeof role === 'string' && role.trim().length > 0 && role.length <= 200) {
+    result.role = role.trim();
+  }
+  if (typeof contact_type === 'string' && contact_type.trim().length > 0 && contact_type.length <= 200) {
+    result.contact_type = contact_type.trim();
+  }
+
+  return result;
 }
 
 serve(async (req) => {
@@ -28,7 +43,6 @@ serve(async (req) => {
   }
 
   try {
-    // Authenticate the user
     const authHeader = req.headers.get('Authorization');
     if (!authHeader?.startsWith('Bearer ')) {
       return new Response(JSON.stringify({ error: 'Unauthorized' }), {
@@ -52,7 +66,6 @@ serve(async (req) => {
       });
     }
 
-    // Validate input
     const rawBody = await req.json();
     const validated = validateInput(rawBody);
     if (!validated) {
