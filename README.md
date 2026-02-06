@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: [https://lovable.dev/projects/minicontahub](https://preview--minicontacthub.lovable.app/)
+**URL**: [https://lovable.dev/projects/minicontahub](https://minicontacthub.lovable.app/login)
 
 # MiniContactHub
 
