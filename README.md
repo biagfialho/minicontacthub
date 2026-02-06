@@ -1,73 +1,145 @@
-# Welcome to your Lovable project
+# Welcome my first Lovable project
 
 ## Project info
 
 **URL**: [https://lovable.dev/projects/minicontahub](https://preview--minicontacthub.lovable.app/)
 
-## How can I edit this code?
+# MiniContactHub
 
-There are several ways of editing your application.
+MiniContactHub é uma aplicação web desenvolvida como **projeto prático de integração e testes**, com o objetivo de demonstrar a construção de um protótipo funcional utilizando **Lovable**, **Supabase**, **n8n** e **Postman**.
 
-**Use Lovable**
+O projeto simula um sistema de **cadastro de usuários**, com **autenticação**, **armazenamento seguro de dados** e **automações**, aplicando boas práticas de **qualidade de software, segurança e integração entre sistemas**.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🔗 Aplicação em Produção
 
-**Use your preferred IDE**
+- **Frontend (Lovable)**  
+  👉 https://preview--minicontacthub.lovable.app/
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Repositório GitHub**  
+  👉 https://github.com/biagfialho/minicontacthub
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🎯 Objetivo do Projeto
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Este projeto foi criado para:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- Desenvolver um **protótipo web funcional**
+- Implementar **login e cadastro de usuários**
+- Integrar frontend com **Supabase (Auth + Database)**
+- Criar **fluxos automatizados no n8n**
+- Testar integrações usando **Postman**
+- Aplicar **boas práticas de segurança e controle de acesso**
+- Demonstrar **mentalidade de QA e testes de integração**
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## 🧠 Visão Geral da Solução
 
-**Edit a file directly in GitHub**
+O MiniContactHub funciona como um hub simples de contato, onde:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. O usuário se cadastra na aplicação
+2. Os dados são processados com segurança
+3. Um fluxo automatizado é disparado
+4. A comunicação ocorre de forma integrada entre sistemas
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🧩 Arquitetura da Aplicação
 
-## What technologies are used for this project?
+```text
+Usuário
+  ↓
+Frontend (Lovable / React)
+  ↓
+Supabase
+  ├── Authentication (Login / Cadastro)
+  ├── Database (armazenamento de dados)
+  └── RLS (Row Level Security)
+  ↓
+n8n
+  ├── Webhooks
+  ├── Automação de fluxos
+  └── Envio de mensagens
 
-This project is built with:
+🚀 Tecnologias Utilizadas,
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+* Frontend
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* shadcn/ui
+* Backend / Infraestrutura
+* Supabase
+* Authentication
+* Database
+* Row Level Security (RLS)
+* Automação
+* n8n
 
-## How can I deploy this project?
+Webhooks
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+* Fluxos automatizados
+* Testes e Validação
+* Postman (testes de webhook e payload)
+* Testes manuais de interface
+* Testes de segurança e autenticação
 
-## Can I connect a custom domain to my Lovable project?
+🔐 Segurança
 
-Yes, you can!
+O projeto aplica conceitos básicos e intermediários de segurança:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+* Autenticação via Supabase Auth
+* Políticas de Row Level Security (RLS)
+* Restrição de acesso a dados sensíveis
+* Proteção contra acesso não autenticado
+* Boas práticas recomendadas pelo scanner de segurança do Lovable
+* Variáveis sensíveis isoladas em ambiente
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+🔄 Fluxos Automatizados (n8n)
+
+📌 Fluxo: Cadastro de Usuário
+
+* Trigger: Webhook
+* Entrada: nome, email, menssagem
+
+  * Processos:
+
+    * Validação do payload
+    * Organização dos dados
+    * Disparo de automação (ex: email de boas-vindas)
+
+📌 Fluxo: Comunicação Automatizada
+
+* Execução baseada em eventos
+* Possibilidade de extensão para envios periódicos
+* Estrutura preparada para novos fluxos
+
+
+📌 Boas Práticas Aplicadas
+
+* Separação de responsabilidades
+* Integração entre múltiplas plataformas
+* Segurança desde a concepção
+* Testes como parte do desenvolvimento
+* Documentação clara e objetiva
+
+📚 Aprendizados
+
+Durante o desenvolvimento deste projeto, foram consolidados conhecimentos em:
+
+* Integração frontend e backend
+* Automação de processos com n8n
+* Uso do Supabase como backend completo
+* Testes de integração com Postman
+* Importância da documentação técnica
+* Visão de qualidade de software (QA)
+
+👩‍💻 Autora
+
+Bianca Fialho 
+Formada em Administração, em transição para a área de tecnologia, com foco em Qualidade de Software (QA), testes de integração e boas práticas de desenvolvimento.
+Conheça meu [Linkedin](www.linkedin.com/in/biancafialhoo)
