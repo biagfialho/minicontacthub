@@ -23,19 +23,14 @@ const Logo = ({ className, size = 'md' }: LogoProps) => {
           fill="none"
           className="w-1/2 h-1/2"
           stroke="currentColor"
-          strokeWidth="2.5"
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <circle cx="12" cy="12" r="3" className="fill-primary-foreground stroke-primary-foreground" />
-          <path d="M12 2v4" className="stroke-primary-foreground" />
-          <path d="M12 18v4" className="stroke-primary-foreground" />
-          <path d="M4.93 4.93l2.83 2.83" className="stroke-primary-foreground" />
-          <path d="M16.24 16.24l2.83 2.83" className="stroke-primary-foreground" />
-          <path d="M2 12h4" className="stroke-primary-foreground" />
-          <path d="M18 12h4" className="stroke-primary-foreground" />
-          <path d="M4.93 19.07l2.83-2.83" className="stroke-primary-foreground" />
-          <path d="M16.24 7.76l2.83-2.83" className="stroke-primary-foreground" />
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" className="stroke-primary-foreground" />
+          <circle cx="9" cy="7" r="4" className="stroke-primary-foreground" />
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87" className="stroke-primary-foreground" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" className="stroke-primary-foreground" />
         </svg>
       </div>
       <span className={cn(
@@ -44,7 +39,7 @@ const Logo = ({ className, size = 'md' }: LogoProps) => {
         size === 'md' && 'text-xl',
         size === 'lg' && 'text-2xl'
       )}>
-        Contatos
+        Recruiter Signal
       </span>
     </div>
   );
