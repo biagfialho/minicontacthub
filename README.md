@@ -63,6 +63,7 @@ n8n
   ├── Webhooks
   ├── Automação de fluxos
   └── Envio de mensagens
+```
 
 🚀 Tecnologias Utilizadas,
 
