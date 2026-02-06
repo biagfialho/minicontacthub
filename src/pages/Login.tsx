@@ -23,7 +23,8 @@ const Login = () => {
     const { error } = await signIn(email, password);
     
     if (error) {
-      setError(error.message);
+      console.error('Login error:', error.message);
+      setError('Email ou senha inválidos. Tente novamente.');
       setLoading(false);
     } else {
       navigate('/form');

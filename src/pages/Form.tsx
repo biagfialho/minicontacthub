@@ -52,7 +52,8 @@ const Form = () => {
       setEmail('');
       setMensagem('');
     } catch (error: any) {
-      setMessage('Erro ao salvar: ' + error.message);
+      console.error('Save error:', error);
+      setMessage('Erro ao salvar. Tente novamente mais tarde.');
     } finally {
       setSaving(false);
     }
