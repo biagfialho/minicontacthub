@@ -25,10 +25,11 @@ const Cadastro = () => {
     const { error } = await signUp(email, password);
     
     if (error) {
+      console.error('Signup error:', error.message);
       if (error.message.includes('already registered')) {
         setError('Este email já está cadastrado.');
       } else {
-        setError(error.message);
+        setError('Não foi possível criar a conta. Tente novamente.');
       }
       setLoading(false);
     } else {
