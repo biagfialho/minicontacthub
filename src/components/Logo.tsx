@@ -39,7 +39,7 @@ const Logo = ({ className, size = 'md' }: LogoProps) => {
         size === 'md' && 'text-xl',
         size === 'lg' && 'text-2xl'
       )}>
-        Recruiter Signal
+        Sinal do Recrutador
       </span>
     </div>
   );

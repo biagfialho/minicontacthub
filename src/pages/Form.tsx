@@ -13,18 +13,18 @@ import Logo from '@/components/Logo';
 import { LogOut, Send, CheckCircle2 } from 'lucide-react';
 
 const ROLE_OPTIONS = [
-  { value: 'recruiter', label: 'Recruiter' },
-  { value: 'hiring_manager', label: 'Hiring Manager' },
+  { value: 'recruiter', label: 'Recrutador(a)' },
+  { value: 'hiring_manager', label: 'Gestor(a) de Contratação' },
   { value: 'tech_lead', label: 'Tech Lead' },
-  { value: 'hr_people_ops', label: 'HR / People Ops' },
-  { value: 'other', label: 'Other' },
+  { value: 'hr_people_ops', label: 'RH / People Ops' },
+  { value: 'other', label: 'Outro' },
 ];
 
 const CONTACT_TYPE_OPTIONS = [
-  { value: 'recruiting', label: 'Recruiting opportunity' },
-  { value: 'exploratory', label: 'Exploratory conversation' },
+  { value: 'recruiting', label: 'Oportunidade de recrutamento' },
+  { value: 'exploratory', label: 'Conversa exploratória' },
   { value: 'networking', label: 'Networking' },
-  { value: 'partnership', label: 'Partnership' },
+  { value: 'partnership', label: 'Parceria' },
 ];
 
 const Form = () => {
@@ -75,7 +75,7 @@ const Form = () => {
       setSubmitted(true);
     } catch (error: any) {
       console.error('Save error:', error);
-      setErrorMsg('Unable to send your message. Please try again later.');
+      setErrorMsg('Não foi possível enviar sua mensagem. Tente novamente mais tarde.');
     } finally {
       setSaving(false);
     }
@@ -91,7 +91,7 @@ const Form = () => {
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="flex flex-col items-center gap-4">
           <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-          <p className="text-muted-foreground text-sm">Loading...</p>
+          <p className="text-muted-foreground text-sm">Carregando...</p>
         </div>
       </div>
     );
@@ -105,7 +105,7 @@ const Form = () => {
           <Logo size="sm" />
           <Button variant="ghost" size="sm" onClick={handleLogout} className="gap-2 text-muted-foreground hover:text-foreground">
             <LogOut className="w-4 h-4" />
-            Sign out
+            Sair
           </Button>
         </div>
       </header>
@@ -115,10 +115,10 @@ const Form = () => {
         {/* Page Header */}
         <div className="mb-10">
           <h1 className="text-3xl font-semibold text-foreground tracking-tight leading-tight">
-            Let's start a professional conversation.
+            Vamos iniciar uma conversa profissional.
           </h1>
           <p className="mt-3 text-muted-foreground text-base leading-relaxed max-w-xl">
-            Recruiters and hiring managers can reach me directly through this channel. This space is designed to prioritize meaningful professional opportunities.
+            Recrutadores e gestores de contratação podem entrar em contato diretamente por este canal. Este espaço foi projetado para priorizar oportunidades profissionais relevantes.
           </p>
         </div>
 
@@ -129,10 +129,10 @@ const Form = () => {
                 <CheckCircle2 className="w-6 h-6 text-primary" />
               </div>
               <h2 className="text-xl font-semibold text-foreground">
-                Thank you for reaching out.
+                Obrigado por entrar em contato.
               </h2>
               <p className="text-muted-foreground text-sm max-w-sm">
-                Your message has been received and will be reviewed. Expect a response within a reasonable timeframe.
+                Sua mensagem foi recebida e será analisada. Espere uma resposta em um prazo razoável.
               </p>
               <Button
                 variant="outline"
@@ -148,7 +148,7 @@ const Form = () => {
                   setMensagem('');
                 }}
               >
-                Send another message
+                Enviar outra mensagem
               </Button>
             </CardContent>
           </Card>
@@ -160,11 +160,11 @@ const Form = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <Label htmlFor="nome" className="text-sm font-medium">
-                      Full Name
+                      Nome Completo
                     </Label>
                     <Input
                       id="nome"
-                      placeholder="Your full name"
+                      placeholder="Seu nome completo"
                       value={nome}
                       onChange={(e) => setNome(e.target.value)}
                       required
@@ -173,12 +173,12 @@ const Form = () => {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email" className="text-sm font-medium">
-                      Email Address
+                      Endereço de Email
                     </Label>
                     <Input
                       id="email"
                       type="email"
-                      placeholder="you@company.com"
+                      placeholder="voce@empresa.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -190,11 +190,11 @@ const Form = () => {
                 {/* Company */}
                 <div className="space-y-2">
                   <Label htmlFor="company" className="text-sm font-medium">
-                    Company / Organization
+                    Empresa / Organização
                   </Label>
                   <Input
                     id="company"
-                    placeholder="Where you work"
+                    placeholder="Onde você trabalha"
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
                     required
@@ -206,11 +206,11 @@ const Form = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <Label className="text-sm font-medium">
-                      Role / Position
+                      Cargo / Posição
                     </Label>
                     <Select value={role} onValueChange={setRole} required>
                       <SelectTrigger className="h-11">
-                        <SelectValue placeholder="Select your role" />
+                        <SelectValue placeholder="Selecione seu cargo" />
                       </SelectTrigger>
                       <SelectContent>
                         {ROLE_OPTIONS.map((opt) => (
@@ -223,11 +223,11 @@ const Form = () => {
                   </div>
                   <div className="space-y-2">
                     <Label className="text-sm font-medium">
-                      Type of Contact
+                      Tipo de Contato
                     </Label>
                     <Select value={contactType} onValueChange={setContactType} required>
                       <SelectTrigger className="h-11">
-                        <SelectValue placeholder="What brings you here" />
+                        <SelectValue placeholder="O que traz você aqui" />
                       </SelectTrigger>
                       <SelectContent>
                         {CONTACT_TYPE_OPTIONS.map((opt) => (
@@ -244,11 +244,11 @@ const Form = () => {
                 {role === 'other' && (
                   <div className="space-y-2">
                     <Label htmlFor="customRole" className="text-sm font-medium">
-                      Please specify your role
+                      Por favor, especifique seu cargo
                     </Label>
                     <Input
                       id="customRole"
-                      placeholder="e.g. VP of Engineering"
+                      placeholder="ex: VP de Engenharia"
                       value={customRole}
                       onChange={(e) => setCustomRole(e.target.value)}
                       required
@@ -262,11 +262,11 @@ const Form = () => {
                 {/* Message */}
                 <div className="space-y-2">
                   <Label htmlFor="mensagem" className="text-sm font-medium">
-                    Message
+                    Mensagem
                   </Label>
                   <Textarea
                     id="mensagem"
-                    placeholder="Share a bit about the opportunity, context, or reason for reaching out."
+                    placeholder="Compartilhe um pouco sobre a oportunidade, contexto ou motivo do contato."
                     value={mensagem}
                     onChange={(e) => setMensagem(e.target.value)}
                     required
@@ -288,12 +288,12 @@ const Form = () => {
                   {saving ? (
                     <>
                       <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
-                      Sending...
+                      Enviando...
                     </>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      Send message
+                      Enviar mensagem
                     </>
                   )}
                 </Button>
@@ -304,7 +304,7 @@ const Form = () => {
 
         {/* Footer note */}
         <p className="text-center text-xs text-muted-foreground mt-8">
-          All messages are reviewed personally. Your information is kept confidential.
+          Todas as mensagens são analisadas pessoalmente. Suas informações são mantidas em sigilo.
         </p>
       </main>
     </div>

@@ -23,17 +23,17 @@ type Contact = {
 
 const SIGNAL_CONFIG = {
   hot: {
-    label: 'Hot',
+    label: 'Quente',
     icon: Flame,
     className: 'bg-destructive/10 text-destructive border-destructive/20',
   },
   warm: {
-    label: 'Warm',
+    label: 'Morno',
     icon: Sun,
     className: 'bg-amber-500/10 text-amber-600 border-amber-500/20',
   },
   cold: {
-    label: 'Cold',
+    label: 'Frio',
     icon: Snowflake,
     className: 'bg-sky-500/10 text-sky-600 border-sky-500/20',
   },
@@ -85,9 +85,9 @@ const InboxPage = () => {
   };
 
   const formatDate = (dateStr: string) => {
-    return new Date(dateStr).toLocaleDateString('en-US', {
+    return new Date(dateStr).toLocaleDateString('pt-BR', {
+      day: '2-digit',
       month: 'short',
-      day: 'numeric',
       year: 'numeric',
     });
   };
@@ -97,7 +97,7 @@ const InboxPage = () => {
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="flex flex-col items-center gap-4">
           <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-          <p className="text-muted-foreground text-sm">Loading...</p>
+          <p className="text-muted-foreground text-sm">Carregando...</p>
         </div>
       </div>
     );
@@ -124,11 +124,11 @@ const InboxPage = () => {
           <div className="flex items-center gap-3">
             <Button variant="outline" size="sm" onClick={() => navigate('/form')} className="gap-2">
               <MessageSquare className="w-4 h-4" />
-              New Contact
+              Novo Contato
             </Button>
             <Button variant="ghost" size="sm" onClick={handleLogout} className="gap-2 text-muted-foreground hover:text-foreground">
               <LogOut className="w-4 h-4" />
-              Sign out
+              Sair
             </Button>
           </div>
         </div>
@@ -143,18 +143,18 @@ const InboxPage = () => {
               <InboxIcon className="w-5 h-5 text-primary" />
             </div>
             <h1 className="text-3xl font-semibold text-foreground tracking-tight">
-              Inbox
+              Caixa de Entrada
             </h1>
           </div>
           <p className="text-muted-foreground text-base leading-relaxed max-w-xl">
-            Incoming professional contacts, prioritized by signal strength.
+            Contatos profissionais recebidos, priorizados por intensidade de sinal.
           </p>
         </div>
 
         {fetching ? (
           <div className="flex flex-col items-center gap-4 py-20">
             <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-            <p className="text-muted-foreground text-sm">Loading contacts...</p>
+            <p className="text-muted-foreground text-sm">Carregando contatos...</p>
           </div>
         ) : contacts.length === 0 ? (
           <Card className="border-border/50 shadow-lg">
@@ -162,9 +162,9 @@ const InboxPage = () => {
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center">
                 <InboxIcon className="w-6 h-6 text-muted-foreground" />
               </div>
-              <h2 className="text-lg font-semibold text-foreground">No contacts yet</h2>
+              <h2 className="text-lg font-semibold text-foreground">Nenhum contato ainda</h2>
               <p className="text-muted-foreground text-sm max-w-sm">
-                When recruiters reach out through the contact form, their messages will appear here.
+                Quando recrutadores entrarem em contato pelo formulário, as mensagens aparecerão aqui.
               </p>
             </CardContent>
           </Card>
