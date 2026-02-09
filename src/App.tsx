@@ -7,6 +7,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
 import Form from "./pages/Form";
+import Inbox from "./pages/Inbox";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/form" element={<Form />} />
+            <Route path="/inbox" element={<Inbox />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

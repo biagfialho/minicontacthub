@@ -1,0 +1,1 @@
+ALTER TABLE public.contacts ADD COLUMN signal text DEFAULT 'warm' CHECK (signal IN ('hot', 'warm', 'cold'));
